@@ -1,0 +1,15 @@
+Admin
+    Dashboard
+    Posts
+    Single Post
+    Media
+    Pages
+    Single Page
+    Comments
+    Appearance
+    Tools
+    Settings
+
+Login
+Register
+Forgot password
