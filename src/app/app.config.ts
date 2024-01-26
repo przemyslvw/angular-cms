@@ -1,6 +1,8 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
+import { enviroments } from '../environments/environments';
+
 import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideClientHydration } from '@angular/platform-browser';
@@ -16,15 +18,7 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     importProvidersFrom([
       provideFirebaseApp(() =>
-        initializeApp({
-          apiKey: "AIzaSyAklQnCtNL8CdVevCFlLJE1VbkmyvFncZw",
-          authDomain: "crud-17-a1293.firebaseapp.com",
-          projectId: "crud-17-a1293",
-          storageBucket: "crud-17-a1293.appspot.com",
-          messagingSenderId: "168818002278",
-          appId: "1:168818002278:web:6a788c16cc1ff52046a0a7",
-          measurementId: "G-E7H54GSLPT"
-        })
+        initializeApp(enviroments.firebase)
       ),
       provideFirestore(() => getFirestore()),
     ]),
