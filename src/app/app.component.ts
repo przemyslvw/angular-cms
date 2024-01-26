@@ -1,6 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { Firestore, collectionData, collection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+
+interface Item {
+  name: string,
+};
 
 @Component({
   selector: 'app-root',
@@ -11,4 +17,11 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'angular-cms';
+  item$: Observable<Item[]>;
+  firestore: Firestore = inject(Firestore);
+
+  constructor() {
+    const itemCollection = collection(this.firestore, 'items');
+    this.item$ = collectionData(itemCollection) as Observable<Item[]>;
+  }
 }

@@ -1,4 +1,6 @@
-<mat-toolbar color="primary">
-    <span>Majdak Przemysław - portfolio projektów</span>
-</mat-toolbar>
 <router-outlet></router-outlet>
+<ul>
+    <li *ngFor="let item of item$ | async">
+        {{ item.name }}
+    </li>
+</ul>
