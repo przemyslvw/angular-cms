@@ -1,2 +1,9 @@
-<p>admin works!</p>
-<router-outlet></router-outlet>
+<div class="ui sidebar visible vertical menu" style="width: 200px;">
+  <a class="item" routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
+  <a class="item" routerLink="/admin/posts" routerLinkActive="active">Posts</a>
+</div>
+<div class="pusher">
+  <div class="ui basic segment">
+    <router-outlet></router-outlet>
+  </div>
+</div>
