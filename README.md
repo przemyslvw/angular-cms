@@ -77,3 +77,7 @@ ng generate component login
 ng generate component register
 ng generate component posts
 
+
+Dodanie nowej bazy danych Firestore Database
+dodanie formularza rejestracji
+
