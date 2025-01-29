@@ -1,10 +1,17 @@
 <h2>Dodaj nowy post</h2>
-<form (ngSubmit)="createPost()">
-  <label for="title">Tytuł:</label>
-  <input id="title" type="text" [(ngModel)]="title" name="title" required />
 
-  <label for="content">Treść:</label>
-  <textarea id="content" [(ngModel)]="content" name="content" required></textarea>
+<mat-card class="add-post-card">
+  <form (ngSubmit)="createPost()">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Tytuł</mat-label>
+      <input matInput type="text" [(ngModel)]="title" name="title" required />
+    </mat-form-field>
 
-  <button type="submit">Dodaj</button>
-</form>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Treść</mat-label>
+      <textarea matInput rows="4" [(ngModel)]="content" name="content" required></textarea>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Dodaj post</button>
+  </form>
+</mat-card>
