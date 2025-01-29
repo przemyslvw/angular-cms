@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Firestore, collection, collectionData, doc, setDoc, deleteDoc, getDocs, query, where } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, doc, setDoc, deleteDoc, getDocs, query, where, updateDoc, increment } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
@@ -33,6 +33,7 @@ export class PostsComponent implements OnInit {
 
     const userId = user.uid;
     const votesCollection = collection(this.firestore, 'votes');
+    const postRef = doc(this.firestore, 'posts', postId);
 
     // Sprawdzenie, czy użytkownik już głosował na ten post
     const q = query(votesCollection, where('postId', '==', postId), where('userId', '==', userId));
@@ -42,18 +43,28 @@ export class PostsComponent implements OnInit {
       const existingVote = existingVotes.docs[0];
       const currentVoteType = existingVote.data()['voteType'];
 
-
       if (currentVoteType === voteType) {
-        // Jeśli użytkownik klika ten sam typ głosu, usuń głos
+        // Usunięcie głosu użytkownika i aktualizacja licznika
         await deleteDoc(doc(this.firestore, 'votes', existingVote.id));
+        await updateDoc(postRef, {
+          [`${voteType}sCount`]: increment(-1), // Zmniejszenie lajków/dislajków
+        });
       } else {
-        // Jeśli użytkownik zmienia głos, zaktualizuj dokument
+        // Zmiana głosu użytkownika
         await setDoc(doc(this.firestore, 'votes', existingVote.id), { voteType }, { merge: true });
+        await updateDoc(postRef, {
+          [`${currentVoteType}sCount`]: increment(-1), // Zmniejszenie starego głosu
+          [`${voteType}sCount`]: increment(1), // Zwiększenie nowego głosu
+        });
       }
     } else {
-      // Jeśli użytkownik nie głosował, dodaj nowy głos
+      // Jeśli użytkownik nie głosował, dodaj nowy głos i zwiększ licznik
       const newVoteRef = doc(this.firestore, 'votes', `${userId}_${postId}`);
       await setDoc(newVoteRef, { userId, postId, voteType });
+
+      await updateDoc(postRef, {
+        [`${voteType}sCount`]: increment(1), // Zwiększenie nowego głosu
+      });
     }
   }
 }
