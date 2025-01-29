@@ -1,0 +1,10 @@
+<h2>Dodaj nowy post</h2>
+<form (ngSubmit)="createPost()">
+  <label for="title">Tytuł:</label>
+  <input id="title" type="text" [(ngModel)]="title" name="title" required />
+
+  <label for="content">Treść:</label>
+  <textarea id="content" [(ngModel)]="content" name="content" required></textarea>
+
+  <button type="submit">Dodaj</button>
+</form>
