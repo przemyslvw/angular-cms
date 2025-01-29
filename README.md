@@ -63,3 +63,11 @@ For more information on using the Angular CLI, including detailed command refere
 npm install -g @angular/cli
 ng new angular-cms
 cd angular-cms
+
+firebase login
+
+ng add @angular/fire
+Firestore Database (baza danych w czasie rzeczywistym)
+Authentication (logowanie użytkowników)
+Cloud Storage (przechowywanie zdjęć)
+
