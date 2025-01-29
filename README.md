@@ -71,3 +71,9 @@ Firestore Database (baza danych w czasie rzeczywistym)
 Authentication (logowanie użytkowników)
 Cloud Storage (przechowywanie zdjęć)
 
+add enviroment.ts
+
+ng generate component login
+ng generate component register
+ng generate component posts
+
