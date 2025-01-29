@@ -20,9 +20,8 @@ export class PostsComponent implements OnInit {
     const postsCollection = collection(this.firestore, 'posts');
     this.posts$ = collectionData(postsCollection, { idField: 'id' });
   }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+
+  ngOnInit(): void {}
 
   async toggleVote(postId: string, voteType: 'like' | 'dislike') {
     const user = this.auth.currentUser;
