@@ -1,0 +1,17 @@
+<div id="add-map" style="height: 400px; width: 100%; margin-bottom: 16px;"></div>
+
+<form (ngSubmit)="addLocation()">
+  <label for="latitude">Szerokość geograficzna:</label>
+  <input id="latitude" type="number" [(ngModel)]="latitude" name="latitude" readonly />
+
+  <label for="longitude">Długość geograficzna:</label>
+  <input id="longitude" type="number" [(ngModel)]="longitude" name="longitude" readonly />
+
+  <label for="title">Tytuł:</label>
+  <input id="title" type="text" [(ngModel)]="title" name="title" required />
+
+  <label for="description">Opis:</label>
+  <textarea [(ngModel)]="description" name="description" required></textarea>
+
+  <button type="submit">Dodaj punkt</button>
+</form>

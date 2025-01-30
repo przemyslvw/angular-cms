@@ -5,6 +5,7 @@
   <!-- Tylko dla niezalogowanych użytkowników -->
   <ng-container *ngIf="!(user$ | async); else loggedIn">
     <button mat-button routerLink="/posts">Posts</button>
+    <button mat-button routerLink="/map">Map</button>
     <button mat-button routerLink="/register">Register</button>
     <button mat-button routerLink="/login">Login</button>
   </ng-container>
@@ -13,6 +14,8 @@
   <ng-template #loggedIn>
     <button mat-button routerLink="/posts">Posts</button>
     <button mat-button routerLink="/add-post">Add Post</button>
+    <button mat-button routerLink="/map">Map</button>
+    <button mat-button routerLink="/add-location">Add Location</button>
     <button mat-button (click)="logout()">Logout</button>
   </ng-template>
 </mat-toolbar>
