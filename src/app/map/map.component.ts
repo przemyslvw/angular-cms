@@ -2,12 +2,15 @@ import { Component, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { MatCardModule } from '@angular/material/card';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
   standalone: true,
+  imports: [MatCardModule, CommonModule]
 })
 export class MapComponent implements AfterViewInit {
   map: L.Map | null = null;
