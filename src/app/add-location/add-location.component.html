@@ -1,17 +1,38 @@
-<div id="add-map" style="height: 400px; width: 100%; margin-bottom: 16px;"></div>
-
-<form (ngSubmit)="addLocation()">
-  <label for="latitude">Szerokość geograficzna:</label>
-  <input id="latitude" type="number" [(ngModel)]="latitude" name="latitude" readonly />
-
-  <label for="longitude">Długość geograficzna:</label>
-  <input id="longitude" type="number" [(ngModel)]="longitude" name="longitude" readonly />
-
-  <label for="title">Tytuł:</label>
-  <input id="title" type="text" [(ngModel)]="title" name="title" required />
-
-  <label for="description">Opis:</label>
-  <textarea [(ngModel)]="description" name="description" required></textarea>
-
-  <button type="submit">Dodaj punkt</button>
-</form>
+<mat-card class="add-location-card">
+    <mat-card-header>
+      <mat-card-title>Dodaj nową lokalizację</mat-card-title>
+    </mat-card-header>
+  
+    <mat-card-content>
+      <!-- Mapa -->
+      <div id="add-map"></div>
+  
+      <!-- Formularz -->
+      <form (ngSubmit)="addLocation()">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Szerokość geograficzna</mat-label>
+          <input matInput type="number" [(ngModel)]="latitude" name="latitude" readonly />
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Długość geograficzna</mat-label>
+          <input matInput type="number" [(ngModel)]="longitude" name="longitude" readonly />
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Tytuł</mat-label>
+          <input matInput type="text" [(ngModel)]="title" name="title" required />
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Opis</mat-label>
+          <textarea matInput [(ngModel)]="description" name="description" required></textarea>
+        </mat-form-field>
+  
+        <mat-card-actions>
+          <button mat-raised-button color="primary" type="submit">Dodaj punkt</button>
+        </mat-card-actions>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  

@@ -1,5 +1,18 @@
+.add-location-card {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.full-width {
+  width: 100%;
+}
+
 #add-map {
   height: 400px;
-  border: 1px solid #ccc;
+  width: 100%;
+  margin-bottom: 16px;
   border-radius: 8px;
+  border: 1px solid #ccc;
 }

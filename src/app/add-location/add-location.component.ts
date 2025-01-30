@@ -2,14 +2,23 @@ import { Component, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
 import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-add-location',
   templateUrl: './add-location.component.html',
   styleUrls: ['./add-location.component.scss'],
   standalone: true,
-  imports: [FormsModule], // Dodaj FormsModule tutaj
-
+  imports: [
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCardModule
+  ],
 })
 export class AddLocationComponent implements AfterViewInit {
   map: L.Map | null = null;
