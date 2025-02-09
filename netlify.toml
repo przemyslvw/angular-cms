@@ -1,0 +1,9 @@
+[build]
+  command = "ng build && ng run angular-cms:server"
+  functions = "netlify/functions"
+  publish = "dist/angular-cms/browser"
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/ssr"
+  status = 200
